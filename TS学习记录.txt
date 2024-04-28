@@ -1,0 +1,90 @@
+const anExampleVariable = "Hello World"
+console.log(anExampleVariable)
+
+let str = 'abc'
+// TypeScript会根据变量初始值来进行类型限定，输入字符串，后面就只会字符串类型
+// str = 10
+// 类型注解
+let str1: string
+
+let numArr = [1, 2, 3]
+const result = numArr.find(item => item > 2) as number
+// as number 表示输出的值一定是number
+result * 5
+
+// To learn more about the language, click above in "Examples" or "What's New".
+// Otherwise, get started by removing these comments and the world is your playground.
+
+let v1: string
+let v2: number
+let v3: boolean
+let nu: null = null
+let un: undefined = undefined
+
+// 联合类型
+// 例子：希望分配类型为字符串或者空
+let v4: string | null = null
+// 希望数据能分配为以下几个值之一
+let v5: 1 | 2 | 3 = 2
+
+// 数组 元组 枚举
+let arr: number[] = [1, 2, 3]
+
+// 数组
+// 表示由数字组成的数组
+let arrl: Array<string> = ['a', 'b', 'c']
+
+// 元组
+// 元组可以存储多个数据，但是限定存储的数据个数，以及每个数据的类型
+let t1: [number, string, number] = [1, 'a', 2]
+// 加问号的意思是值可选，例如如下情况，可以没有2这个项
+let t2: [number, string, number?] = [1, 'a']
+t1[0] = 2
+
+// 枚举
+enum MyEnum{
+    A = 6,
+    B,
+    C
+}
+
+console.log(MyEnum.A) //得到的答案是A的值 为6
+console.log(MyEnum[6]) // 得到的答案是6所对应的项， 为A
+// 若设置A = 6的话，B C 不赋值的话则均会往下顺延
+
+// 函数
+// 方法  方法名(变量：声明变量类型) ：声明输出类型
+function MyFN (a: number, b: string): number{
+    return 1
+}
+// ? 表示可选参数
+function MyFN1 (a: number, b?: string): number{
+    return 1
+}
+
+// ...rest剩余值都是数组结构
+function MyFN2 (a: number, b?: string, c?:boolean, ...rest: number[]): number{
+    return 1
+}
+
+const f = MyFN2(20, 'abc', true, 1, 2, 3)
+
+// 接口 interface
+interface Obj{
+    name: string,
+    age: number
+}
+
+const obj: Obj = {
+    name: 'a',
+    age: 1
+}
+
+// type 类型别名
+type MyUserName = string | number
+let a: MyUserName = 10
+
+// 泛型
+function myFN<T> (a: number, b: number): number[]{
+    return [a, b]
+}
